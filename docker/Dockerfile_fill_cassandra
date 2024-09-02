@@ -1,0 +1,10 @@
+FROM python:3.8-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir cassandra-driver
+
+COPY ../src/fill_cassandra.py .
+COPY ../src/city.list.json .
+
+CMD ["python", "fill_cassandra.py"]
